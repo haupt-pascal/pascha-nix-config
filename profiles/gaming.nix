@@ -9,7 +9,6 @@
     ../modules/system/aliases.nix
     ../modules/desktop/plasma.nix
     ../modules/programs/backup/borg.nix
-    ../modules/programs/gaming/steam.nix
     ../modules/programs/terminal/shell.nix
     ../modules/programs/terminal/tmux.nix
     ../modules/programs/terminal/ghostty.nix
@@ -23,10 +22,7 @@
     ../modules/programs/communication/discord.nix
     ../users/pascha.nix
   ];
-
-  # Gaming-spezifische Pakete (Steam wird durch steam.nix Modul gehandhabt)
   environment.systemPackages = with pkgs; [
-    # Gaming tools
     lutris
     bottles
     heroic

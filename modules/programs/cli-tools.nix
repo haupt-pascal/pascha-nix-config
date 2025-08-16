@@ -68,7 +68,7 @@
   ];
 
   # Enable some services that are commonly expected
-  services.locate.enable = true;  # Enable locate/updatedb for fast file searching
+  services.locate.enable = true;
   
   # Ensure cron service is enabled
   services.cron.enable = true;
