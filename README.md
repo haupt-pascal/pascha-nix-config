@@ -33,8 +33,8 @@ A clean, modular NixOS configuration that just works™️
 git clone https://github.com/haupt-pascal/pascha-nix-config.git ~/nix-config
 cd ~/nix-config
 
-# ⚠️ WICHTIG: Benutzername anpassen
-# Ersetze "pascha" in folgenden Dateien mit deinem Benutzernamen:
+# ⚠️ IMPORTANT: Username Configuration
+# Replace "pascha" with your username in these files:
 # - users/pascha.nix
 # - modules/programs/development/docker.nix
 # - modules/programs/backup/borg.nix
@@ -58,7 +58,7 @@ sudo reboot
 git clone https://github.com/haupt-pascal/pascha-nix-config.git ~/nix-config
 cd ~/nix-config
 
-# ⚠️ WICHTIG: Benutzername anpassen (siehe oben)
+# ⚠️ IMPORTANT: Username Configuration (see above)
 
 # Copy your hardware configuration
 sudo cp /etc/nixos/hardware-configuration.nix hosts/desktop-pc/
@@ -159,30 +159,30 @@ sudo reboot
 
 ## 🔧 Customization
 
-### ⚠️ Before First Use - Username Anpassung
+### ⚠️ Before First Use - Username Configuration
 
-**WICHTIG**: Du musst "pascha" durch deinen Benutzernamen in folgenden Dateien ersetzen:
+**IMPORTANT**: You must replace "pascha" with your username in the following files:
 
 ```bash
-# 1. Benutzer-Datei umbenennen und anpassen
-mv users/pascha.nix users/IHR_USERNAME.nix
-nano users/IHR_USERNAME.nix  # users.users.pascha → users.users.IHR_USERNAME
+# 1. Rename and edit user file
+mv users/pascha.nix users/YOUR_USERNAME.nix
+nano users/YOUR_USERNAME.nix  # users.users.pascha → users.users.YOUR_USERNAME
 
-# 2. Docker-Gruppe anpassen
-nano modules/programs/development/docker.nix  # users.users.pascha → users.users.IHR_USERNAME
+# 2. Update Docker group permissions
+nano modules/programs/development/docker.nix  # users.users.pascha → users.users.YOUR_USERNAME
 
-# 3. Backup-Service anpassen  
-nano modules/programs/backup/borg.nix  # User = "pascha" → User = "IHR_USERNAME"
+# 3. Update backup service user  
+nano modules/programs/backup/borg.nix  # User = "pascha" → User = "YOUR_USERNAME"
 
-# 4. Auto-Login anpassen
+# 4. Update auto-login user
 nano modules/desktop/plasma.nix  # services.displayManager.autoLogin.user = "pascha"
 
-# 5. Aliases anpassen (optional)
-nano modules/system/aliases.nix  # Pfade von ~/pascha-nix-config anpassen
+# 5. Update aliases (optional)
+nano modules/system/aliases.nix  # Update paths from ~/pascha-nix-config
 
-# 6. Profile-Imports anpassen
-nano profiles/development.nix  # ../users/pascha.nix → ../users/IHR_USERNAME.nix  
-nano profiles/gaming.nix       # ../users/pascha.nix → ../users/IHR_USERNAME.nix
+# 6. Update profile imports
+nano profiles/development.nix  # ../users/pascha.nix → ../users/YOUR_USERNAME.nix  
+nano profiles/gaming.nix       # ../users/pascha.nix → ../users/YOUR_USERNAME.nix
 ```
 
 ### Adding Software
@@ -199,7 +199,7 @@ nano modules/programs/development/git.nix
 nano modules/programs/cli-tools.nix
 
 # User packages
-nano users/IHR_USERNAME.nix
+nano users/YOUR_USERNAME.nix
 
 # Apply changes
 sudo nixos-rebuild switch --flake .#framework-13  # or #desktop-pc
