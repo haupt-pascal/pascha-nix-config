@@ -47,5 +47,56 @@
     bat
     ripgrep
     fd
+    nushell                    # Modern shell with structured data support
   ];
+  
+  # Create Nushell config directory and files
+  environment.etc."nushell/config.nu".text = ''
+    # Nushell configuration
+    $env.config = {
+      show_banner: false
+      completions: {
+        case_sensitive: false
+        quick: true
+        partial: true
+        algorithm: "fuzzy"
+      }
+      history: {
+        max_size: 10000
+        sync_on_enter: true
+        file_format: "plaintext"
+      }
+      edit_mode: emacs
+      table: {
+        mode: rounded
+        index_mode: always
+        show_empty: true
+      }
+      use_grid_icons: true
+      use_ansi_coloring: true
+      use_ls_colors: true
+    }
+    
+    # Custom aliases for Nushell
+    alias ll = ls -la
+    alias la = ls -la  
+    alias c = clear
+    alias q = exit
+    alias grep = rg
+    alias find = fd
+    
+    # Git aliases
+    alias gs = git status
+    alias ga = git add
+    alias gc = git commit
+    alias gp = git push
+    alias gl = git pull
+  '';
+  
+  environment.etc."nushell/env.nu".text = ''
+    # Environment variables for Nushell
+    $env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/.local/bin")
+    $env.EDITOR = "nano"
+    $env.BROWSER = "firefox"
+  '';
 }

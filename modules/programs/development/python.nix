@@ -12,6 +12,13 @@
     pipenv                     # Environment manager (standalone package)
     poetry                     # Modern Python dependency management
     
+    # Create a Python environment with pip properly integrated
+    (python3.withPackages (ps: with ps; [
+      pip
+      setuptools
+      wheel
+    ]))
+    
     # Popular Python packages that are commonly needed
     python3Packages.requests
     python3Packages.numpy
