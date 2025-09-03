@@ -15,6 +15,7 @@
     ../modules/programs/editors/vscode.nix
     ../modules/programs/editors/vim.nix
     ../modules/programs/editors/neovim.nix
+    ../modules/programs/editors/sublime-merge.nix
     ../modules/programs/development/git.nix
     ../modules/programs/development/nodejs.nix
     ../modules/programs/development/python.nix
