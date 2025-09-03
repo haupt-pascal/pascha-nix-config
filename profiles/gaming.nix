@@ -21,6 +21,7 @@
     ../modules/programs/development/docker.nix
     ../modules/programs/cli-tools.nix
     ../modules/programs/communication/discord.nix
+    ../modules/programs/office/libreoffice.nix
     ../users/pascha.nix
   ];
   environment.systemPackages = with pkgs; [
