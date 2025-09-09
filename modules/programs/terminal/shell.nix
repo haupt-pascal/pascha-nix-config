@@ -21,10 +21,8 @@
         source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
       fi
       
-      # FNM (Fast Node Manager) setup
-      if command -v fnm >/dev/null 2>&1; then
-        eval "$(fnm env --use-on-cd --shell zsh)"
-      fi
+      # Node.js from Nixpkgs (nodejs_22) is available system-wide
+      # No version manager needed - use nix-shell for different versions
       
       source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
       [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

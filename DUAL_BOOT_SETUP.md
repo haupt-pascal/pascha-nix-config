@@ -65,20 +65,30 @@ sudo reboot
 
 ## Troubleshooting
 
-### FNM (Node Version Manager) Setup
+### Node.js Setup
 
-Falls FNM nach dem Rebuild nicht automatisch funktioniert, füge diese Zeile zu deiner `~/.zshrc` hinzu:
+**Standard:** Node.js 22 ist system-weit verfügbar (aus Nixpkgs).
 
 ```bash
-# FNM Setup für Node.js Version Management
-eval "$(fnm env --use-on-cd --shell zsh)"
+# Node.js Version prüfen
+node --version  # v22.x.x
+npm --version   # Sollte funktionieren
+
+# Für AdonisJS direkt verwenden:
+npm init adonisjs@latest webmon_api -- --db=postgres --kit=api
 ```
 
-Oder setze es einmalig:
+**Für andere Node.js Versionen:** 
 ```bash
-echo 'eval "$(fnm env --use-on-cd --shell zsh)"' >> ~/.zshrc
-source ~/.zshrc
+# Temporär Node.js 20 nutzen
+nix-shell -p nodejs_20 nodePackages.npm
+
+# Projekt-spezifische shell.nix erstellen:
+echo 'with import <nixpkgs> {}; mkShell { buildInputs = [ nodejs_20 nodePackages.npm postgresql ]; }' > shell.nix
+nix-shell
 ```
+
+**Hinweis:** FNM wurde entfernt da es generische Linux-Binaries lädt, die auf NixOS nicht funktionieren.
 
 ### Config Updates von GitHub
 ```bash

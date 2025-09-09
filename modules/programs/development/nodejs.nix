@@ -2,9 +2,9 @@
 
 {
   environment.systemPackages = with pkgs; [
-    # Multiple Node.js versions available (nodejs_18 removed - EOL)
-    nodejs_20 
+    # Node.js 22 as default (latest LTS)
     nodejs_22
+    nodejs_20  # Keep 20 as fallback
     nodejs-slim_20  # Smaller Node.js build
     
     # Package managers
@@ -13,14 +13,11 @@
     nodePackages.yarn
     nodePackages.pnpm
     
-    # Node version management tools
-    fnm  # Fast Node Manager (alternative to NVM)
-    # nodePackages.n not available - use fnm instead
+    # FNM removed - causes issues with generic Linux binaries on NixOS
   ];
 
-  # FNM shell integration is handled in shell.nix module
-  
-  # Alternative: You can also use direnv with shell.nix files
+  # Node.js 22 is available system-wide
+  # For project-specific versions, use nix-shell or direnv with shell.nix files
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
 }
