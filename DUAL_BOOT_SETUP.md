@@ -65,6 +65,21 @@ sudo reboot
 
 ## Troubleshooting
 
+### FNM (Node Version Manager) Setup
+
+Falls FNM nach dem Rebuild nicht automatisch funktioniert, füge diese Zeile zu deiner `~/.zshrc` hinzu:
+
+```bash
+# FNM Setup für Node.js Version Management
+eval "$(fnm env --use-on-cd --shell zsh)"
+```
+
+Oder setze es einmalig:
+```bash
+echo 'eval "$(fnm env --use-on-cd --shell zsh)"' >> ~/.zshrc
+source ~/.zshrc
+```
+
 ### Config Updates von GitHub
 ```bash
 cd /etc/nixos-config
