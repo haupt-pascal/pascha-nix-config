@@ -18,21 +18,8 @@
     # nodePackages.n not available - use fnm instead
   ];
 
-  # Enable shell integration for fnm (NVM alternative)
-  programs.bash.shellInit = ''
-    # FNM (Fast Node Manager) setup
-    if command -v fnm >/dev/null 2>&1; then
-      eval "$(fnm env --use-on-cd)"
-    fi
-  '';
-
-  programs.zsh.shellInit = ''
-    # FNM (Fast Node Manager) setup
-    if command -v fnm >/dev/null 2>&1; then
-      eval "$(fnm env --use-on-cd)"
-    fi
-  '';
-
+  # FNM shell integration is handled in shell.nix module
+  
   # Alternative: You can also use direnv with shell.nix files
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
