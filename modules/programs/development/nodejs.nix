@@ -2,10 +2,10 @@
 
 {
   environment.systemPackages = with pkgs; [
-    # Multiple Node.js versions available
-    nodejs_18
+    # Multiple Node.js versions available (nodejs_18 removed - EOL)
     nodejs_20 
     nodejs_22
+    nodejs-slim_20  # Smaller Node.js build
     
     # Package managers
     bun
@@ -15,7 +15,7 @@
     
     # Node version management tools
     fnm  # Fast Node Manager (alternative to NVM)
-    nodePackages.n  # Node version manager
+    # nodePackages.n not available - use fnm instead
   ];
 
   # Enable shell integration for fnm (NVM alternative)

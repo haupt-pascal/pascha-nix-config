@@ -6,7 +6,7 @@
 
 let
   # Choose your Node.js version here
-  nodeVersion = pkgs.nodejs_20; # or nodejs_18, nodejs_22, etc.
+  nodeVersion = pkgs.nodejs_20; # or nodejs_22 (nodejs_18 is EOL and removed)
 in
 pkgs.mkShell {
   name = "node-project-shell";

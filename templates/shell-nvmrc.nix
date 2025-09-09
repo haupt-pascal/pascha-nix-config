@@ -13,9 +13,10 @@ let
   nodeVersion = builtins.replaceStrings ["\n" "\r" " "] ["" "" ""] nvmrcFile;
   
   # Map common version patterns to nixpkgs versions
+  # Note: Node.js 18 has reached EOL and is no longer available
   selectedNode = 
     if nodeVersion == "18" || nodeVersion == "18.x" || pkgs.lib.hasPrefix "18." nodeVersion
-    then pkgs.nodejs_18
+    then pkgs.nodejs_20  # Fallback to 20 for EOL 18.x requests
     else if nodeVersion == "20" || nodeVersion == "20.x" || pkgs.lib.hasPrefix "20." nodeVersion  
     then pkgs.nodejs_20
     else if nodeVersion == "22" || nodeVersion == "22.x" || pkgs.lib.hasPrefix "22." nodeVersion
