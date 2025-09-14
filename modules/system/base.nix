@@ -36,4 +36,9 @@
 
   # Printing
   services.printing.enable = true;
+
+  # Global system packages
+  environment.systemPackages = with pkgs; [
+    headsetcontrol
+  ];
 }
